@@ -15,7 +15,7 @@ Examples: google-indoor-directions
 ## Description
 
 A short description about what this project is all about. 
-Two or three sentences should be enough to give an overview about the scope.
+Three to five sentences should be enough to give an overview about the scope.
 The description should be written in English.
 Also provide a link to [The Client](http://client.com) and add the launch date, if already defined.
 
