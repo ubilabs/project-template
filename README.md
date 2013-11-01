@@ -44,7 +44,7 @@ After cloning the repository, install all dependencies:
 
 ```sh
 update # make sure you have the latest version
-install # install new dependencied
+install # install new dependencies
 ```
 
 ### Develop
