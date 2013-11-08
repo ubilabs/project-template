@@ -2,7 +2,7 @@
 
 Create a file `git-hooks/pre-commit` in your project with the following content:
 
-```
+```sh
 #!/bin/sh
 #
 # Pre-commit hooks
@@ -13,7 +13,7 @@ grunt lint
 
 Add the necessary dependencies to `package.json`:
 
-```
+```js
 npm install grunt-contrib-clean --save-dev
 npm install grunt-shell --save-dev
 npm install grunt-gjslint --save-dev
@@ -21,7 +21,7 @@ npm install grunt-gjslint --save-dev
 
 Adjust the `Gruntfile.js`:
 
-```
+```js
   […]
   
     // Clean stuff up
@@ -66,7 +66,7 @@ Adjust the `Gruntfile.js`:
 
 Set up the the npm post install event in `package.json`:
 
-```
+```json
   "scripts": {
     "postinstall": "grunt hookmeup"
   }
