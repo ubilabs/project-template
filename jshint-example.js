@@ -34,7 +34,6 @@ function f() {
 }
 
 if (a == b) {
-
 } else {                        // noempty: true
   a++;                          // plusplus: false
 }
@@ -85,7 +84,7 @@ function f() {                  // maxstatements: 15
   a++;
   a++;
 }
- 
+
 function f() {                   // maxcomplexity: 7
 
   if (true) {
@@ -136,7 +135,7 @@ function f() {
   x++;                          // funcscope
 }
 
-a.true;                         // expr
+a && a.b();                     // expr
 
 a.__iterator__ = f;             // iterator
 
@@ -148,14 +147,12 @@ a = b                           // laxbreak
 function f(argument) {
   var a
     ,b                          // laxcomma
-    ,c
     ;
 
   a = b + c;
 }
 
 for (a = 0; a < 10; a++) {
-
   a.callback(function() {
     b++;                        // loopfunc: true
   });
@@ -168,7 +165,7 @@ a.__proto__ = b;                // proto
 
 a.href = 'javascript:void';     // scripturl
 
-a++;                            // smarttabs
+a++;           	              	// smarttabs
 
 function f(argument) {
   var x = 1;
@@ -186,6 +183,7 @@ function f() {
   this.a++;                     // validthis
 }
 
+xyz.a();
 window.a++;                     // browser: true
 alert(a);                       // devel: true
 require('a');                   // node: true
