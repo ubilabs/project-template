@@ -23,7 +23,7 @@ Adjust the `Gruntfile.js`:
 
 ```js
   […]
-  
+
     // Clean stuff up
     clean: {
       // Clean any pre-commit hooks in .git/hooks directory
@@ -37,8 +37,8 @@ Adjust the `Gruntfile.js`:
         command: 'cp git-hooks/pre-commit .git/hooks/'
       }
     },
- 
-    // Lint *.js with the Google Closure Linter 
+
+    // Lint *.js with the Google Closure Linter
     gjslint: {
       options: {
         reporter: {
@@ -49,18 +49,18 @@ Adjust the `Gruntfile.js`:
         src: ['app/scripts/*.js']
       }
     }
-  
+
   […]
-  
+
   grunt.registerTask('hookmeup', [
     'clean:hooks',
     'shell:hooks'
   ]);
-  
+
   grunt.registerTask('lint', [
     'gjslint'
   ]);
-  
+
   […]
 ```
 
