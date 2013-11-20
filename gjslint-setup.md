@@ -22,8 +22,21 @@ npm install grunt-gjslint --save-dev
 Adjust the `Gruntfile.js`:
 
 ```js
-  […]
 
+  […]
+  watch: {
+    gjslint: {
+      files: '<%= folders.app %>/scripts/{,*/}*.js',
+      tasks: 'gjslint',
+      options: {
+        // to call the task in the same process. Keep the env nice and tidy.
+        spawn: false
+      }
+    }
+  },
+
+  […]
+```
     // Clean stuff up
     clean: {
       // Clean any pre-commit hooks in .git/hooks directory
@@ -51,6 +64,11 @@ Adjust the `Gruntfile.js`:
     }
 
   […]
+
+  // just lint the changed file, add this just befoe task definitions
+  grunt.event.on('watch', function(action, filepath) {
+    grunt.config('gjslint.lib.src', filepath);
+  });
 
   grunt.registerTask('hookmeup', [
     'clean:hooks',
