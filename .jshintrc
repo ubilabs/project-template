@@ -6,10 +6,10 @@
     "maxerr"        : 50,       // {int} Maximum error before stopping
 
     // Custom Globals
-    "predef"        : ["$", "_", "app"],       // additional predefined global variables
+    "predef"        : ["$", "_", "app", "Model"],       // additional predefined global variables
 
     // Enforcing
-    "bitwise"       : true,     // true: Prohibit bitwise operators (&, |, ^, etc.)
+    "bitwise"       : false,     // true: Prohibit bitwise operators (&, |, ^, etc.)
     "camelcase"     : false,    // true: Identifiers must be in camelCase
     "curly"         : true,     // true: Require {} for every new block or scope
     "eqeqeq"        : false,    // true: Require triple equals (===) for comparison
@@ -31,9 +31,9 @@
     "unused"        : true,     // true: Require all defined variables be used
     "strict"        : false,    // true: Requires all functions run in ES5 Strict Mode
     "trailing"      : true,     // true: Prohibit trailing whitespaces
-    "maxparams"     : 3,        // {int} Max number of formal params allowed per function
+    "maxparams"     : 4,        // {int} Max number of formal params allowed per function
     "maxdepth"      : 3,        // {int} Max depth of nested blocks (within functions)
-    "maxstatements" : 15,       // {int} Max number statements per function
+    "maxstatements" : 20,       // {int} Max number statements per function
     "maxcomplexity" : 7,        // {int} Max cyclomatic complexity per function
     "maxlen"        : 80,       // {int} Max number of characters per line
 
