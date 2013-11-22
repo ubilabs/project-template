@@ -44,7 +44,7 @@ githooks: {
 },
 ```
 
-Add githooks task to the taskrunner (it will create the hooks evertime). Or add this to `package.json` (and it will create the hooks after install):
+Add githooks task to the taskrunner (it will create the hooks evertime you start that task). Or add this to `package.json` (and it will create the hooks after install):
 
 ```
 "scripts": {
