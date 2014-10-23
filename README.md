@@ -75,6 +75,15 @@ build
 deploy
 ```
 
+### Release
+
+To make a relase, run the following commands:
+
+```sh
+grunt release:[patch|minor|major]
+grunt package
+```
+
 ## Hosting
 
 The project is hosted at [whereever.com](http://whereever.com)
