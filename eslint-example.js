@@ -48,7 +48,7 @@ function Klass() {}
 
 a = Klass();                    // nonew
 
-a++;                            /* trailing */  
+a++;                            /* trailing */
 
 function f(a, b, c, d) {        // maxparams: 3
   a = b + c + d;
