@@ -1,0 +1,49 @@
+{
+  "name": "{{project-name}}",
+  "version": "0.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ubilabs/{{project-name}}.git"
+  },
+  "devDependencies": {
+    "autoprefixer-stylus": "^0.7.0",
+    "babel-core": "^5.6.15",
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "bumpery": "^1.0.7",
+    "conventional-changelog-generator": "0.0.3",
+    "eslint": "^0.24.0",
+    "gcloud-storage-upload": "0.0.5",
+    "jade": "^1.11.0",
+    "light-server": "^1.0.3",
+    "mocha": "^2.2.5",
+    "pre-commit": "^1.0.10",
+    "stylus": "^0.51.1"
+  },
+  "precommit": {
+    "run": "test",
+    "template": ".gitcommit.template"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "scripts": {
+    "prepare": "npm run clean && npm run mkdirs",
+    "clean": "rm -rf {build}/*",
+    "mkdirs": "mkdir -p build/{scripts,styles}",
+    "server": "npm run build && light-server -s build -p 8000 -w 'app/scripts/**/*.js*  # npm run js' -w 'app/styles/**/*styl # npm run stylus # reloadcss' -w 'app/jade/**/*jade # npm run jade'",
+    "jade": "jade app/jade/*jade -H -P -o build",
+    "stylus": "stylus --inline --sourcemap-inline -u autoprefixer-stylus app/styles/main.styl -o build/styles",
+    "js": "browserify app/scripts/main.js -t babelify > build/scripts/main.js",
+    "test": "eslint app/scripts && mocha",
+    "build": "npm run prepare && npm run jade && npm run stylus && npm run js",
+    "changelog": "conventional-changelog-generator && atom -w CHANGELOG.md",
+    "deploy": "gcloud-storage-upload -s '{{project-name}}' -p build",
+    "release": "echo 'Usage: npm run release:patch|minor|major'",
+    "release:patch": "bumpery --verify='npm test' --no-push --no-commit --no-createTag --versionType patch && npm run changelog && npm run release:commit",
+    "release:minor": "bumpery --verify='npm test' --no-push --no-commit --no-createTag --versionType minor && npm run changelog && npm run release:commit",
+    "release:major": "bumpery --verify='npm test' --no-push --no-commit --no-createTag --versionType major && npm run changelog && npm run release:commit",
+    "release:commit": "bumpery --commitFiles 'CHANGELOG.md package.json' --commitMessage 'chore(release): version %VERSION%' --no-bumpVersion && sh ./tools/notify.sh release $npm_package_version"
+  }
+}
