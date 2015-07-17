@@ -6,21 +6,6 @@
     "type": "git",
     "url": "https://github.com/ubilabs/{{project-name}}.git"
   },
-  "devDependencies": {
-    "autoprefixer-stylus": "^0.7.0",
-    "babel-core": "^5.6.15",
-    "babelify": "^6.1.2",
-    "browserify": "^10.2.4",
-    "bumpery": "^1.0.7",
-    "conventional-changelog-generator": "0.0.3",
-    "eslint": "^0.24.0",
-    "gcloud-storage-upload": "0.0.5",
-    "jade": "^1.11.0",
-    "light-server": "^1.0.3",
-    "mocha": "^2.2.5",
-    "pre-commit": "^1.0.10",
-    "stylus": "^0.51.1"
-  },
   "precommit": {
     "run": "test",
     "template": ".gitcommit.template"
