@@ -21,6 +21,10 @@
     "pre-commit": "^1.0.10",
     "stylus": "^0.51.1"
   },
+  "precommit": {
+    "run": "test",
+    "template": ".gitcommit.template"
+  },
   "engines": {
     "node": ">=0.12.0"
   },
