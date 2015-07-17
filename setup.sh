@@ -12,8 +12,6 @@ else
 fi
 export npm_config_loglevel
 
-TMP=".tmp"
-
 NPM_MODULES=(
   autoprefixer-stylus
   babel-core
@@ -30,15 +28,6 @@ NPM_MODULES=(
   stylus
 )
 
-# rm -rf "$TMP" || true
-# mkdir "$TMP"
-# if [ $? -ne 0 ]; then
-#   echo "failed to mkdir $TMP" >&2
-#   exit 1
-# fi
-
-cd "$TMP"
-
 fetch() {
   local BASENAME=`basename ${1}`
 
@@ -47,7 +36,7 @@ fetch() {
   fi
 
   echo "Load ${BASENAME}"
-  # curl -SsL "${1}" -o $BASENAME
+  curl -SsL "${1}" -o $BASENAME
 }
 
 #
