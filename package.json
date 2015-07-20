@@ -1,0 +1,14 @@
+{
+  "name": "project-template",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ubilabs/project-template"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.3.1"
+  },
+  "scripts": {
+    "deploy": "gh-pages -d . {setup.sh,index.html,ubilabs.svg,templates}"
+  }
+}
