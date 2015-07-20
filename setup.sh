@@ -12,7 +12,7 @@ else
 fi
 export npm_config_loglevel
 
-TEMPLATES_BASE_URL="https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/templates/"
+TEMPLATES_BASE_URL="http://ubilabs.github.io/project-template/templates/"
 
 NPM_MODULES=(
   autoprefixer-stylus
