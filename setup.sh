@@ -12,14 +12,22 @@ else
 fi
 export npm_config_loglevel
 
-TMP=".tmp"
-
-rm -rf "$TMP" || true
-mkdir "$TMP"
-if [ $? -ne 0 ]; then
-  echo "failed to mkdir $TMP" >&2
-  exit 1
-fi
+NPM_MODULES=(
+  autoprefixer-stylus
+  babel-core
+  babelify
+  browserify
+  bumpery
+  conventional-changelog-generator
+  eslint
+  gcloud-storage-upload
+  jade
+  light-server
+  mocha
+  pre-commit
+  stylus
+  uglifyjs
+)
 
 fetch() {
   local BASENAME=`basename ${1}`
@@ -36,8 +44,9 @@ fetch() {
 # Load the README and fill out some defaults.
 #
 
-cd "$TMP" \
-  && fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/README_TEMPLATE.md" "README.md"
+fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/README_TEMPLATE.md" "README.md"
+fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/.editorconfig"
+fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/CONVENTIONS.md"
 
 read -p "The name of the project " PROJECT_NAME </dev/tty
 read -p "Please add a short description " PROJECT_DESCRIPTION </dev/tty
@@ -64,8 +73,5 @@ if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
 
   fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/.eslintrc"
 
-  npm i
+  npm i ${NPM_MODULES[@]} -D
 fi
-
-fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/.editorconfig"
-fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/CONVENTIONS.md"

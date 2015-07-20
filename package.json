@@ -6,21 +6,6 @@
     "type": "git",
     "url": "https://github.com/ubilabs/{{project-name}}.git"
   },
-  "devDependencies": {
-    "autoprefixer-stylus": "^0.7.0",
-    "babel-core": "^5.6.15",
-    "babelify": "^6.1.2",
-    "browserify": "^10.2.4",
-    "bumpery": "^1.0.7",
-    "conventional-changelog-generator": "0.0.3",
-    "eslint": "^0.24.0",
-    "gcloud-storage-upload": "0.0.5",
-    "jade": "^1.11.0",
-    "light-server": "^1.0.3",
-    "mocha": "^2.2.5",
-    "pre-commit": "^1.0.10",
-    "stylus": "^0.51.1"
-  },
   "precommit": {
     "run": "test",
     "template": ".gitcommit.template"
@@ -30,14 +15,16 @@
   },
   "scripts": {
     "prepare": "npm run clean && npm run mkdirs",
+    "prepare:dev": "npm run prepare && npm run jade && npm run stylus && npm run js",
     "clean": "rm -rf {build}/*",
     "mkdirs": "mkdir -p build/{scripts,styles}",
-    "server": "npm run build && light-server -s build -p 8000 -w 'app/scripts/**/*.js*  # npm run js' -w 'app/styles/**/*styl # npm run stylus # reloadcss' -w 'app/jade/**/*jade # npm run jade'",
+    "server": "npm run prepare:dev && light-server -s build -p 8000 -w 'app/scripts/**/*.js*  # npm run js' -w 'app/styles/**/*styl # npm run stylus # reloadcss' -w 'app/jade/**/*jade # npm run jade'",
     "jade": "jade app/jade/*jade -H -P -o build",
     "stylus": "stylus --inline --sourcemap-inline -u autoprefixer-stylus app/styles/main.styl -o build/styles",
+    "uglifyjs": "uglifyjs build/scripts/main.js -o build/scripts/main.js -c warnings=false,drop_console=true --mangle",
     "js": "browserify app/scripts/main.js -t babelify > build/scripts/main.js",
     "test": "eslint app/scripts && mocha",
-    "build": "npm run prepare && npm run jade && npm run stylus && npm run js",
+    "build": "npm run prepare && npm run jade && npm run stylus && npm run js && npm run uglifyjs",
     "changelog": "conventional-changelog-generator && atom -w CHANGELOG.md",
     "deploy": "gcloud-storage-upload -s '{{project-name}}' -p build",
     "release": "echo 'Usage: npm run release:patch|minor|major'",
