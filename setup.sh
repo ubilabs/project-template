@@ -26,6 +26,7 @@ NPM_MODULES=(
   mocha
   pre-commit
   stylus
+  uglifyjs
 )
 
 fetch() {
