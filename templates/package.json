@@ -1,0 +1,36 @@
+{
+  "name": "{{project-name}}",
+  "version": "0.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ubilabs/{{project-name}}.git"
+  },
+  "precommit": {
+    "run": "test",
+    "template": ".gitcommit.template"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "scripts": {
+    "prepare": "npm run clean && npm run mkdirs",
+    "prepare:dev": "npm run prepare && npm run jade && npm run stylus && npm run js",
+    "clean": "rm -rf {build}/*",
+    "mkdirs": "mkdir -p build/{scripts,styles}",
+    "server": "npm run prepare:dev && light-server -s build -p 8000 -w 'app/scripts/**/*.js*  # npm run js' -w 'app/styles/**/*styl # npm run stylus # reloadcss' -w 'app/jade/**/*jade # npm run jade'",
+    "jade": "jade app/jade/*jade -H -P -o build",
+    "stylus": "stylus --inline --sourcemap-inline -u autoprefixer-stylus app/styles/main.styl -o build/styles",
+    "uglifyjs": "uglifyjs build/scripts/main.js -o build/scripts/main.js -c warnings=false,drop_console=true --mangle",
+    "js": "browserify app/scripts/main.js -t babelify > build/scripts/main.js",
+    "test": "eslint app/scripts && mocha",
+    "build": "npm run prepare && npm run jade && npm run stylus && npm run js && npm run uglifyjs",
+    "changelog": "conventional-changelog-generator && atom -w CHANGELOG.md",
+    "deploy": "gcloud-storage-upload -s '{{project-name}}' -p build",
+    "release": "echo 'Usage: npm run release:patch|minor|major'",
+    "release:patch": "bumpery --verify='npm test' --no-push --no-commit --no-createTag --versionType patch && npm run changelog && npm run release:commit",
+    "release:minor": "bumpery --verify='npm test' --no-push --no-commit --no-createTag --versionType minor && npm run changelog && npm run release:commit",
+    "release:major": "bumpery --verify='npm test' --no-push --no-commit --no-createTag --versionType major && npm run changelog && npm run release:commit",
+    "release:commit": "bumpery --commitFiles 'CHANGELOG.md package.json' --commitMessage 'chore(release): version %VERSION%' --no-bumpVersion && sh ./tools/notify.sh release $npm_package_version"
+  }
+}

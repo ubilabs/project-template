@@ -12,6 +12,8 @@ else
 fi
 export npm_config_loglevel
 
+TEMPLATES_BASE_URL="http://ubilabs.github.io/project-template/templates/"
+
 NPM_MODULES=(
   autoprefixer-stylus
   babel-core
@@ -30,23 +32,23 @@ NPM_MODULES=(
 )
 
 fetch() {
-  local BASENAME=`basename ${1}`
+  local BASENAME=${1}
 
   if [[ ${#@} == 2 ]]; then
     BASENAME=${2}
   fi
 
   echo "Load ${BASENAME}"
-  curl -SsL "${1}" -o $BASENAME
+  curl -SsL "${TEMPLATES_BASE_URL}${BASENAME}" -o ${BASENAME}
 }
 
 #
 # Load the README and fill out some defaults.
 #
 
-fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/README_TEMPLATE.md" "README.md"
-fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/.editorconfig"
-fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/CONVENTIONS.md"
+fetch "README.md" "README.md"
+fetch ".editorconfig"
+fetch "CONVENTIONS.md"
 
 read -p "The name of the project " PROJECT_NAME </dev/tty
 read -p "Please add a short description " PROJECT_DESCRIPTION </dev/tty
@@ -66,12 +68,10 @@ echo
 read -p "What is the type of the project [nodejs, other]: " PROJECT_TYPE </dev/tty
 
 if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
-  fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/package.json"
+  fetch "package.json"
 
   echo "update package.json"
   sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" package.json
 
-  fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/.eslintrc"
-
-  npm i ${NPM_MODULES[@]} -D
+  fetch ".eslintrc"
 fi
