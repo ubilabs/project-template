@@ -45,6 +45,8 @@ fetch() {
 #
 
 fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/README_TEMPLATE.md" "README.md"
+fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/.editorconfig"
+fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/CONVENTIONS.md"
 
 read -p "The name of the project " PROJECT_NAME </dev/tty
 read -p "Please add a short description " PROJECT_DESCRIPTION </dev/tty
@@ -73,6 +75,3 @@ if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
 
   npm i ${NPM_MODULES[@]} -D
 fi
-
-fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/.editorconfig"
-fetch "https://raw.githubusercontent.com/ubilabs/ubilabs-project-template/master/CONVENTIONS.md"
