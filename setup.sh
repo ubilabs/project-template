@@ -1,6 +1,6 @@
 #!/bin/sh
 
-npm_config_loglevel="error"
+config_loglevel="error"
 if [ "x$npm_debug" = "x" ]; then
   (exit 0)
 else
@@ -8,9 +8,9 @@ else
   echo "Note that this requires bash or zsh."
   set -o xtrace # print commands before executing them
   set -o pipefail # outputs error on failing part of a pipe chain.
-  npm_config_loglevel="verbose"
+  config_loglevel="verbose"
 fi
-export npm_config_loglevel
+export config_loglevel
 
 TEMPLATES_BASE_URL="http://ubilabs.github.io/project-template/templates/"
 
@@ -70,4 +70,7 @@ if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
   sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" package.json
 
   fetch ".eslintrc"
+
+  echo "install npm modules ${NPM_MODULES[@]}"
+  npm i ${NPM_MODULES[@]} --save-dev
 fi
