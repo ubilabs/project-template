@@ -34,12 +34,8 @@ NPM_MODULES=(
 fetch() {
   local BASENAME=${1}
 
-  if [[ ${#@} == 2 ]]; then
-    BASENAME=${2}
-  fi
-
-  echo "Load ${BASENAME}"
-  curl -SsL "${TEMPLATES_BASE_URL}${BASENAME}" -o ${BASENAME}
+  echo "Load ${BASENAME} from ${TEMPLATES_BASE_URL}${BASENAME#.}"
+  curl -SsL "${TEMPLATES_BASE_URL}${BASENAME#.}" -o ${BASENAME}
 }
 
 #
