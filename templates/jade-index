@@ -1,0 +1,7 @@
+extends layouts/default
+
+block content
+
+  .container
+    h1 {{project-name}}
+    p {{project-description}}

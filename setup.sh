@@ -33,16 +33,22 @@ NPM_MODULES=(
 
 fetch() {
   local BASENAME=${1}
+  local OUT_FILE_PATH=${2}
+
+  if [ -z "$OUT_FILE_PATH" ]; then
+    OUT_FILE_PATH=$BASENAME
+  fi
 
   echo "Load ${BASENAME} from ${TEMPLATES_BASE_URL}${BASENAME#.}"
-  curl -SsL "${TEMPLATES_BASE_URL}${BASENAME#.}" -o ${BASENAME}
+  curl -SsL "${TEMPLATES_BASE_URL}${BASENAME#.}" -o ${OUT_FILE_PATH}
+  echo "Saved ${BASENAME} to ${OUT_FILE_PATH}"
 }
 
 #
 # Load the README and fill out some defaults.
 #
 
-fetch "README.md" "README.md"
+fetch "README.md"
 fetch ".editorconfig"
 fetch "CONVENTIONS.md"
 
@@ -74,3 +80,27 @@ if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
   echo "install npm modules ${NPM_MODULES[@]}"
   npm i ${NPM_MODULES[@]} --save-dev
 fi
+
+read -p "Use default folder structure? [y, N]: " DEFAULT_FOLDER_STRUCTURE </dev/tty
+
+if [[ ${DEFAULT_FOLDER_STRUCTURE} == 'y' ]]; then
+
+  mkdir -p app/{jade/layouts,styles,scripts}
+
+  echo "Created folder structure:"
+  find app -type d -print
+
+  fetch "jade-default" "app/jade/layouts/default.jade"
+  fetch "jade-index" "app/jade/index.jade"
+  fetch "main-css" "app/styles/main.styl"
+  fetch "main-js" "app/scripts/main.js"
+
+  echo "update default.jade"
+  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" app/jade/layouts/default.jade
+
+  echo "update index.jade"
+  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" app/jade/index.jade
+  sed -i '' -e "s/{{project-description}}/${PROJECT_DESCRIPTION}/g" app/jade/index.jade
+fi
+
+echo "Setup finished, good to go!"
