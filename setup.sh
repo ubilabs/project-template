@@ -33,16 +33,22 @@ NPM_MODULES=(
 
 fetch() {
   local BASENAME=${1}
+  local OUT_FILE_PATH=${2}
+
+  if [ -z "$OUT_FILE_PATH" ]; then
+    OUT_FILE_PATH=$BASENAME
+  fi
 
   echo "Load ${BASENAME} from ${TEMPLATES_BASE_URL}${BASENAME#.}"
-  curl -SsL "${TEMPLATES_BASE_URL}${BASENAME#.}" -o ${BASENAME}
+  curl -SsL "${TEMPLATES_BASE_URL}${BASENAME#.}" -o ${OUT_FILE_PATH}
+  echo "Saved ${BASENAME} to ${OUT_FILE_PATH}"
 }
 
 #
 # Load the README and fill out some defaults.
 #
 
-fetch "README.md" "README.md"
+fetch "README.md"
 fetch ".editorconfig"
 fetch "CONVENTIONS.md"
 
@@ -84,17 +90,10 @@ if [[ ${DEFAULT_FOLDER_STRUCTURE} == 'y' ]]; then
   echo "Created folder structure:"
   find app -type d -print
 
-  fetch "jade-default"
-  mv jade-default app/jade/layouts/default.jade
-
-  fetch "jade-index"
-  mv jade-index app/jade/index.jade
-
-  fetch "main-css"
-  mv main-css app/styles/main.styl
-
-  fetch "main-js"
-  mv main-css app/scripts/main.js
+  fetch "jade-default" "app/jade/layouts/default.jade"
+  fetch "jade-index" "app/jade/index.jade"
+  fetch "main-css" "app/styles/main.styl"
+  fetch "main-js" "app/scripts/main.js"
 fi
 
 echo "Setup finished, good to go!"
