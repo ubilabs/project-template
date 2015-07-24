@@ -94,6 +94,13 @@ if [[ ${DEFAULT_FOLDER_STRUCTURE} == 'y' ]]; then
   fetch "jade-index" "app/jade/index.jade"
   fetch "main-css" "app/styles/main.styl"
   fetch "main-js" "app/scripts/main.js"
+
+  echo "update default.jade"
+  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" app/jade/layouts/default.jade
+
+  echo "update index.jade"
+  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" app/jade/index.jade
+  sed -i '' -e "s/{{project-description}}/${PROJECT_DESCRIPTION}/g" app/jade/index.jade
 fi
 
 echo "Setup finished, good to go!"
