@@ -1,4 +1,4 @@
-extends layouts/_default
+extends layouts/default
 
 block content
 

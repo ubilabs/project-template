@@ -85,7 +85,7 @@ if [[ ${DEFAULT_FOLDER_STRUCTURE} == 'y' ]]; then
   find app -type d -print
 
   fetch "jade-default"
-  mv jade-default app/jade/layouts/_default.jade
+  mv jade-default app/jade/layouts/default.jade
 
   fetch "jade-index"
   mv jade-index app/jade/index.jade
