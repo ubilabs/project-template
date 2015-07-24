@@ -1,0 +1,7 @@
+h1
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translateY(-50%)
+  font-size: 72px
+  color: #267dc0

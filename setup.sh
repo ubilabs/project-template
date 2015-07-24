@@ -74,3 +74,27 @@ if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
   echo "install npm modules ${NPM_MODULES[@]}"
   npm i ${NPM_MODULES[@]} --save-dev
 fi
+
+read -p "Use default folder structure? [y, N]: " DEFAULT_FOLDER_STRUCTURE </dev/tty
+
+if [[ ${DEFAULT_FOLDER_STRUCTURE} == 'y' ]]; then
+
+  mkdir -p app/{jade/layouts,styles,scripts}
+
+  echo "Created folder structure:"
+  find app -type d -print
+
+  fetch "jade-default"
+  mv jade-default app/jade/layouts/_default.jade
+
+  fetch "jade-index"
+  mv jade-index app/jade/index.jade
+
+  fetch "main-css"
+  mv main-css app/styles/main.styl
+
+  fetch "main-js"
+  mv main-css app/scripts/main.js
+fi
+
+echo "Setup finished, good to go!"
