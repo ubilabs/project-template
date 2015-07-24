@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 config_loglevel="error"
 if [ "x$npm_debug" = "x" ]; then
