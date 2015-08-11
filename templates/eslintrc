@@ -63,7 +63,7 @@
     "consistent-return": 2,
     "curly": [2, "all"],
     "default-case": 2,
-    "dot-notation": [0, {
+    "dot-notation": [2, {
       "allowKeywords": true
     }],
     "eqeqeq": 2,
@@ -78,7 +78,7 @@
     "no-extend-native": 2,
     "no-extra-bind": 2,
     "no-fallthrough": 2,
-    "no-floating-decimal": 0,
+    "no-floating-decimal": 2,
     "no-implicit-coercion": [2, {
       "boolean": true,
       "number": true,
@@ -180,7 +180,7 @@
     "no-spaced-func": 2,
     "no-ternary": 0,
     "no-trailing-spaces": 2,
-    "no-underscore-dangle": 0,
+    "no-underscore-dangle": 1,
     "one-var": 2,
     "operator-assignment": 0,
     "padded-blocks": [1, "never"],
@@ -229,7 +229,7 @@
     "no-class-assign": 2,
     "no-const-assign": 2,
     "prefer-reflect": 1,
-    "prefer-reflect": 1,
+    "prefer-spread": 1,
     "require-yield": 2
   }
 }
