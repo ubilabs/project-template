@@ -3,9 +3,9 @@
 # Configure these:
 PATH="<http://storage.ubidev.net/MY-PROJECT-PATH/index.html>"
 CHANNEL="#MY-CHANNEL"
+URL="https://hooks.slack.com/services/MY-HOOK"
 
 # These should not change.
-URL="https://hooks.slack.com/services/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"
 NAME="Benachrichtigungsbiene"
 ICON=":bee:"
 
