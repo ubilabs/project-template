@@ -77,6 +77,9 @@ if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
 
   fetch ".eslintrc"
 
+  fetch "gitignore"
+  mv gitignore .gitignore
+
   echo "install npm modules ${NPM_MODULES[@]}"
   npm i ${NPM_MODULES[@]} --save-dev
 fi
