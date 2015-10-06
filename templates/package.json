@@ -18,7 +18,7 @@
     "prepare:dev": "npm run prepare && npm run jade && npm run stylus && npm run js",
     "clean": "rm -rf {build}/*",
     "mkdirs": "mkdir -p build/{scripts,styles}",
-    "server": "npm run prepare:dev && light-server -s build -p 8000 -w 'app/scripts/**/*.js*  # npm run js' -w 'app/styles/**/*styl # npm run stylus # reloadcss' -w 'app/jade/**/*jade # npm run jade'",
+    "server": "npm run prepare:dev && light-server -b 0.0.0.0 -s build -p 8000 -w 'app/scripts/**/*.js*  # npm run js' -w 'app/styles/**/*styl # npm run stylus # reloadcss' -w 'app/jade/**/*jade # npm run jade'",
     "jade": "jade app/jade/*jade -H -P -o build",
     "stylus": "stylus --inline --sourcemap-inline -u autoprefixer-stylus app/styles/main.styl -o build/styles",
     "uglifyjs": "uglifyjs build/scripts/main.js -o build/scripts/main.js -c warnings=false,drop_console=true --mangle",
