@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configure these:
-PATH="<http://storage.ubidev.net/MY-PROJECT-PATH/index.html>"
+DEPLOYMENTPATH="<http://storage.ubidev.net/MY-PROJECT-PATH/index.html>"
 CHANNEL="#MY-CHANNEL"
 URL="https://hooks.slack.com/services/MY-HOOK"
 
@@ -14,7 +14,7 @@ case "$1" in
     MESSAGE="New App Release! Version $2. :tada:"
     ;;
   "deploy")
-    MESSAGE="Deployed a new version to $PATH. :confetti_ball:"
+    MESSAGE="Deployed a new version to $DEPLOYMENTPATH. :confetti_ball:"
     ;;
   *)
     echo "Usage: ./notify.sh release 1.0.0|deploy"
