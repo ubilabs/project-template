@@ -54,11 +54,20 @@ npm run deploy
 
 ### Release
 
-To make a release, run the following commands:
+The release process should look like this:
 
-```sh
-npm run release:[patch|minor|major]
-```
+1. Create a new release branch
+2. Bump version via:
+  ```sh
+  npm version [major | minor | patch]
+  ```
+3. Push the created commit & the new git tag:
+  ```sh
+  git push -u origin <release-branch> && git push --tags
+  ```
+4. Merge the release branch using a pull request
+5. Checkout the `master` branch and get it update to date
+6. **optional:** [Deploy](#deploy) the new version from `master`
 
 ## Hosting
 
