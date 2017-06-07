@@ -29,6 +29,7 @@ NPM_MODULES=(
   pre-commit
   stylus
   uglifyjs
+  babel-preset-env
 )
 
 fetch() {
@@ -76,6 +77,7 @@ if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
   sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" package.json
 
   fetch ".eslintrc"
+  fetch ".babelrc"
 
   fetch "gitignore"
   mv gitignore .gitignore
