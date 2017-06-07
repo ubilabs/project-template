@@ -29,6 +29,7 @@ NPM_MODULES=(
   pre-commit
   stylus
   uglifyjs
+  babel-preset-env
 )
 
 fetch() {
