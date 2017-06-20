@@ -32,7 +32,12 @@ module.exports = {
         // always extract the css into a file
         use: ExtractTextPlugin.extract({
           use: [
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                url: false
+              }
+            },
             {
               loader: 'postcss-loader',
               options: {
