@@ -17,9 +17,8 @@
     "deploy": "gcloud-storage-upload -s '{{project-name}}' -p build",
     "postversion": "npm run changelog && git add CHANGELOG.md && git commit --amend --no-edit",
     "preversion": "npm test",
-    "start": "npm run clean && npm run watch-files & webpack-dev-server",
+    "start": "npm run clean && npm run sync-files -- --watch & webpack-dev-server",
     "sync-files": "sync-files --no-delete src/static build/static",
     "test": "eslint webpack.config.js src/scripts",
-    "watch-files": "sync-files --no-delete --watch src/static build/static"
   }
 }
