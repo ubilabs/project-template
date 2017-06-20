@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "npm run clean && NODE_ENV=production webpack -p",
-    "changelog": "conventional-changelog-generator && $EDITOR -w CHANGELOG.md",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "clean": "rm -rf build/*",
     "deploy": "gcloud-storage-upload -s '{{project-name}}' -p build",
     "postversion": "npm run changelog && git add CHANGELOG.md && git commit --amend --no-edit",
