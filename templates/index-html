@@ -1,0 +1,19 @@
+<html>
+
+<head>
+  <title>{{project-name}}</title>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{project-description}}" />
+  <meta name="author" content="" />
+  <meta name="revisit-after" content="3 days" />
+
+  <link href="styles/main.css" rel="stylesheet" />
+
+</head>
+
+<body>
+</body>
+
+</html>

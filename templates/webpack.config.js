@@ -27,11 +27,6 @@ module.exports = {
         }
       },
       {
-        test: /\.pug$/,
-        exclude: /node_modules/,
-        loader: 'pug-loader'
-      },
-      {
         test: /\.styl$/i,
         exclude: /node_modules/,
         // always extract the css into a file
@@ -54,7 +49,7 @@ module.exports = {
   plugins: [
     new HtmlPlugin({
       filename: 'index.html',
-      template: 'src/templates/index.pug'
+      template: 'src/templates/index.html'
     }),
     new ExtractTextPlugin({
       filename: 'styles/main.css'

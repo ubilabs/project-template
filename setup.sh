@@ -29,8 +29,6 @@ NPM_MODULES=(
   html-webpack-plugin
   postcss-loader
   pre-commit
-  pug
-  pug-loader
   stylus
   stylus-loader
   webpack
@@ -100,17 +98,13 @@ if [[ ${DEFAULT_FOLDER_STRUCTURE} == 'y' ]]; then
   echo "Created folder structure:"
   find src -type d -print
 
-  fetch "pug-default" "src/templates/default.pug"
-  fetch "pug-index" "src/templates/index.pug"
+  fetch "index-html" "src/templates/index.html"
   fetch "index-css" "src/styles/index.styl"
   fetch "index-js" "src/scripts/index.js"
 
-  echo "update default.pug"
-  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" src/templates/default.pug
-
-  echo "update index.pug"
-  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" src/templates/index.pug
-  sed -i '' -e "s/{{project-description}}/${PROJECT_DESCRIPTION}/g" src/templates/index.pug
+  echo "update index.html"
+  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" src/templates/index.html
+  sed -i '' -e "s/{{project-description}}/${PROJECT_DESCRIPTION}/g" src/templates/index.html
 fi
 
 echo "Setup finished, good to go!"
