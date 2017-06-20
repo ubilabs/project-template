@@ -1,0 +1,110 @@
+<!doctype html>
+<head>
+  <title>Ubilabs Project Template</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300,100,700' rel='stylesheet' type='text/css'>
+  <style media="screen">
+  /**
+  * Resets
+  */
+  *, :before, :after {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+  }
+
+  /**
+  * Base
+  */
+  html {
+  font: 112.5%/1.2 "Roboto", Arial, sans-serif;
+  color: #3d464d;
+  background-color: #fff;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  height: 100%;
+  overflow: hidden-x;
+  text-align: center;
+  }
+
+  body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+  }
+
+  .container {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 48rem;
+  max-width: 100%;
+  }
+
+  a {
+  color: #3d464d;
+  -webkit-transition: color 0.2s;
+          transition: color 0.2s;
+  }
+
+  a:hover, a:focus {
+  color: #267dc0;
+  }
+
+  h1 {
+  font-size: 72px;
+  font-size: 4rem;
+  font-weight: 100;
+  margin-bottom: .5em;
+  color: #267dc0;
+  }
+
+  .subheader {
+  font-weight: 300;
+  margin-bottom: 1.5em;
+  }
+
+
+  .footer {
+  font-weight: 300;
+  padding-top: 2em;
+  margin-top: 2em;
+  border-top: 1px solid #ccc;
+  }
+
+  .ubilabs {
+  vertical-align: middle;
+  }
+  .hint {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: #eee;
+    border: 1px solid #ccc
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ubilabs Project Template</h1>
+    <div class="hint">
+      curl http://ubilabs.github.io/project-template/setup.sh | sh
+    </div>
+    <div class="footer">
+      <a href="https://github.com/ubilabs/project-template">View project on GitHub</a>. Made by <a href="http://www.ubilabs.net/en" title="Ubilabs"><img src="ubilabs.svg" alt="Ubilabs" class="ubilabs" width="100"></a>
+    </div>
+  </div>
+</body>
