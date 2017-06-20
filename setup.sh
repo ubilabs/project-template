@@ -15,7 +15,7 @@ export config_loglevel
 TEMPLATES_BASE_URL="http://ubilabs.github.io/project-template/templates/"
 
 NPM_MODULES=(
-  autoprefixer-loader
+  autoprefixer
   babel-core
   babel-eslint
   babel-loader
@@ -27,6 +27,7 @@ NPM_MODULES=(
   extract-text-webpack-plugin
   gcloud-storage-upload
   html-webpack-plugin
+  postcss-loader
   pre-commit
   pug
   pug-loader

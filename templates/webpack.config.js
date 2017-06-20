@@ -36,7 +36,17 @@ module.exports = {
         exclude: /node_modules/,
         // always extract the css into a file
         use: ExtractTextPlugin.extract({
-          use: ['css-loader', 'autoprefixer-loader', 'stylus-loader']
+          use: [
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: isProduction ? [require('autoprefixer')] : null,
+                sourceMap: true
+              }
+            },
+            'stylus-loader'
+          ]
         })
       }
     ]
