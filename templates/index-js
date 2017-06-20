@@ -1,0 +1,3 @@
+import '../styles/index.styl';
+
+console.log('Hallo Ubi Template!');
