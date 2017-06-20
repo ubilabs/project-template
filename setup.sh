@@ -15,21 +15,25 @@ export config_loglevel
 TEMPLATES_BASE_URL="http://ubilabs.github.io/project-template/templates/"
 
 NPM_MODULES=(
-  autoprefixer-stylus
+  autoprefixer-loader
   babel-core
-  babelify
-  browserify
-  bumpery
-  conventional-changelog-generator
-  eslint
-  gcloud-storage-upload
-  jade
-  light-server
-  mocha
-  pre-commit
-  stylus
-  uglifyjs
+  babel-eslint
+  babel-loader
+  babel-plugin-transform-object-rest-spread
   babel-preset-env
+  conventional-changelog-generator
+  css-loader
+  eslint
+  extract-text-webpack-plugin
+  gcloud-storage-upload
+  html-webpack-plugin
+  pre-commit
+  pug
+  pug-loader
+  stylus
+  stylus-loader
+  webpack
+  webpack-dev-server
 )
 
 fetch() {
@@ -72,12 +76,12 @@ read -p "What is the type of the project [nodejs, other]: " PROJECT_TYPE </dev/t
 
 if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
   fetch "package.json"
+  fetch "webpack.config.js"
 
   echo "update package.json"
   sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" package.json
 
   fetch ".eslintrc"
-  fetch ".babelrc"
 
   fetch "gitignore"
   mv gitignore .gitignore
@@ -90,22 +94,22 @@ read -p "Use default folder structure? [y, N]: " DEFAULT_FOLDER_STRUCTURE </dev/
 
 if [[ ${DEFAULT_FOLDER_STRUCTURE} == 'y' ]]; then
 
-  mkdir -p app/{jade/layouts,styles,scripts}
+  mkdir -p src/{templates,styles,scripts}
 
   echo "Created folder structure:"
-  find app -type d -print
+  find src -type d -print
 
-  fetch "jade-default" "app/jade/layouts/default.jade"
-  fetch "jade-index" "app/jade/index.jade"
-  fetch "main-css" "app/styles/main.styl"
-  fetch "main-js" "app/scripts/main.js"
+  fetch "pug-default" "src/templates/default.pug"
+  fetch "pug-index" "src/templates/index.pug"
+  fetch "index-css" "src/styles/index.styl"
+  fetch "index-js" "src/scripts/index.js"
 
-  echo "update default.jade"
-  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" app/jade/layouts/default.jade
+  echo "update default.pug"
+  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" src/templates/default.pug
 
-  echo "update index.jade"
-  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" app/jade/index.jade
-  sed -i '' -e "s/{{project-description}}/${PROJECT_DESCRIPTION}/g" app/jade/index.jade
+  echo "update index.pug"
+  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" src/templates/index.pug
+  sed -i '' -e "s/{{project-description}}/${PROJECT_DESCRIPTION}/g" src/templates/index.pug
 fi
 
 echo "Setup finished, good to go!"
