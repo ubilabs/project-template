@@ -31,6 +31,7 @@ NPM_MODULES=(
   pre-commit
   stylus
   stylus-loader
+  sync-files
   webpack
   webpack-dev-server
 )
@@ -93,7 +94,7 @@ read -p "Use default folder structure? [y, N]: " DEFAULT_FOLDER_STRUCTURE </dev/
 
 if [[ ${DEFAULT_FOLDER_STRUCTURE} == 'y' ]]; then
 
-  mkdir -p src/{templates,styles,scripts}
+  mkdir -p src/{templates,styles,scripts,static}
 
   echo "Created folder structure:"
   find src -type d -print
