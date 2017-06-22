@@ -61,8 +61,8 @@ read -p "The name of the project " PROJECT_NAME </dev/tty
 read -p "Please add a short description " PROJECT_DESCRIPTION </dev/tty
 
 echo "update README.md"
-sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" README.md
-sed -i '' -e "s/{{project-description}}/${PROJECT_DESCRIPTION}/g" README.md
+sed -i -e "s/{{project-name}}/${PROJECT_NAME}/g" README.md
+sed -i -e "s/{{project-description}}/${PROJECT_DESCRIPTION}/g" README.md
 
 echo
 read -p "Don't forget to update the staging links and setup instructions when you are ready!" NOOP </dev/tty
@@ -79,7 +79,7 @@ if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
   fetch "webpack.config.js"
 
   echo "update package.json"
-  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" package.json
+  sed -i -e "s/{{project-name}}/${PROJECT_NAME}/g" package.json
 
   fetch ".eslintrc"
 
@@ -104,8 +104,8 @@ if [[ ${DEFAULT_FOLDER_STRUCTURE} == 'y' ]]; then
   fetch "index-js" "src/scripts/index.js"
 
   echo "update index.html"
-  sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" src/templates/index.html
-  sed -i '' -e "s/{{project-description}}/${PROJECT_DESCRIPTION}/g" src/templates/index.html
+  sed -i -e "s/{{project-name}}/${PROJECT_NAME}/g" src/templates/index.html
+  sed -i -e "s/{{project-description}}/${PROJECT_DESCRIPTION}/g" src/templates/index.html
 fi
 
 echo "Setup finished, good to go!"
