@@ -19,6 +19,6 @@
     "preversion": "npm test",
     "start": "npm run clean && npm run sync-files -- --watch & webpack-dev-server",
     "sync-files": "sync-files --no-delete src/static build/static",
-    "test": "eslint webpack.config.js src/scripts",
+    "test": "eslint webpack.config.js src/scripts"
   }
 }
