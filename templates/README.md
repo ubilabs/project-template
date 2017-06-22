@@ -19,8 +19,6 @@
 ### Prerequisites
 Make sure you have the following tools installed:
 
-For example:
-
 * git
 * npm
 
@@ -28,7 +26,6 @@ For example:
 
 After cloning the repository, install all dependencies:
 
-For example:
 ```sh
 npm install # install new dependencies
 ```
@@ -37,16 +34,14 @@ npm install # install new dependencies
 
 Run the following command to start the server on localhost:
 
-For example:
 ```sh
-npm run server # start the server
+npm start # start the server
 ```
 
 ### Deploy
 
 To deploy the application, run the following commands:
 
-For example:
 ```sh
 npm run build
 npm run deploy
