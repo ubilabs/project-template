@@ -21,7 +21,7 @@ NPM_MODULES=(
   babel-loader
   babel-plugin-transform-object-rest-spread
   babel-preset-env
-  conventional-changelog-generator
+  conventional-changelog-cli
   css-loader
   eslint
   extract-text-webpack-plugin
