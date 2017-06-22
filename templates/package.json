@@ -11,14 +11,15 @@
     "template": ".gitcommit.template"
   },
   "scripts": {
-    "build": "npm run clean && npm run sync-files && NODE_ENV=production webpack -p",
+    "build": "npm run clean && npm run copy-files && NODE_ENV=production webpack -p",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "clean": "rm -rf build/*",
+    "copy-files": "sync-files --no-delete src/static build/static",
     "deploy": "gcloud-storage-upload -s '{{project-name}}' -p build",
     "postversion": "npm run changelog && git add CHANGELOG.md && git commit --amend --no-edit",
     "preversion": "npm test",
-    "start": "npm run clean && npm run sync-files -- --watch & webpack-dev-server",
-    "sync-files": "sync-files --no-delete src/static build/static",
-    "test": "eslint webpack.config.js src/scripts"
+    "start": "npm run clean && npm run watch-files & webpack-dev-server",
+    "test": "eslint webpack.config.js src/scripts",
+    "watch-files": "sync-files --watch --no-delete src/static build/static"
   }
 }
