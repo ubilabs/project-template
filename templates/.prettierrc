@@ -9,6 +9,6 @@
     "jsxBracketSameLine": true,
     "arrowParens": "avoid",
     "rangeStart": 0,
-    "rangeEnd": Inifinty,
+    "rangeEnd": Infinity,
     "parser": "babylon"
 }
