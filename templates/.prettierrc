@@ -8,7 +8,5 @@
     "bracketSpacing": false,
     "jsxBracketSameLine": true,
     "arrowParens": "avoid",
-    "rangeStart": 0,
-    "rangeEnd": Infinity,
     "parser": "babylon"
 }
