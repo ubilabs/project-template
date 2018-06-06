@@ -29,6 +29,7 @@ NPM_MODULES=(
   html-webpack-plugin
   postcss-loader
   pre-commit
+  prettier
   stylus
   stylus-loader
   sync-files
@@ -82,6 +83,7 @@ if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
   sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" package.json
 
   fetch ".eslintrc"
+  fetch ".prettierrc"
 
   fetch "gitignore"
   mv gitignore .gitignore
