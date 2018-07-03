@@ -1,6 +1,10 @@
-Please check all boxes before submitting your PR!
+| Q                       | A |
+| ----------------------- | -------------------- |
+| Fixed Issues?           | `Fixes #1, Fixes #2` 
+| Patch: Bug Fix?         |
+| Major: Breaking Change? |
+| Minor: New Feature?     |
+| Tests Added + Pass?     |
+| Any Dependency Changes? |
 
-- [ ] Works in Internet Explorer 11
-- [ ] Works in Microsoft Edge
-- [ ] Works in Firefox
-- [ ] Works in Safari
+<!-- Describe your changes below in as much detail as possible -->
