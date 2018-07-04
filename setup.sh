@@ -104,6 +104,9 @@ if [[ ${DEFAULT_FOLDER_STRUCTURE} == 'y' ]]; then
   fetch "index-html" "src/templates/index.html"
   fetch "index-css" "src/styles/index.styl"
   fetch "index-js" "src/scripts/index.js"
+  fetch "Bug_report.md" ".github/ISSUE_TEMPLATE/Bug_report.md"
+  fetch "Feature_request.md" ".github/ISSUE_TEMPLATE/Feature_request.md"
+  fetch "PULL_REQUEST_TEMPLATE.md" ".github/PULL_REQUEST_TEMPLATE.md"
 
   echo "update index.html"
   sed -i '' -e "s/{{project-name}}/${PROJECT_NAME}/g" src/templates/index.html
