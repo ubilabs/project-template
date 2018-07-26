@@ -24,6 +24,7 @@ NPM_MODULES=(
   conventional-changelog-cli
   css-loader
   eslint
+  mini-css-extract-plugin
   extract-text-webpack-plugin
   gcloud-storage-upload
   html-webpack-plugin
@@ -34,6 +35,7 @@ NPM_MODULES=(
   stylus-loader
   sync-files
   webpack
+  webpack-cli
   webpack-dev-server
 )
 
@@ -73,9 +75,9 @@ echo
 # Define some project type stuff
 #
 
-read -p "What is the type of the project [nodejs, other]: " PROJECT_TYPE </dev/tty
+read -p "What is the type of the project [javascript, other]: " PROJECT_TYPE </dev/tty
 
-if [[ ${PROJECT_TYPE} == 'nodejs' ]]; then
+if [[ ${PROJECT_TYPE} == 'javascript' ]]; then
   fetch "package.json"
   fetch "webpack.config.js"
 
