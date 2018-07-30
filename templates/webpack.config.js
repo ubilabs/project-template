@@ -1,4 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 
@@ -16,7 +16,7 @@ module.exports = {
   },
   devtool: isProduction ? false : 'source-map',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -30,24 +30,25 @@ module.exports = {
         test: /\.styl$/i,
         exclude: /node_modules/,
         // always extract the css into a file
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                url: false
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: isProduction ? [require('autoprefixer')] : [],
-                sourceMap: !isProduction
-              }
-            },
-            'stylus-loader'
-          ]
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              url: false
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: isProduction ? [require('autoprefixer')] : [],
+              sourceMap: !isProduction
+            }
+          },
+          'stylus-loader'
+        ]
       }
     ]
   },
@@ -56,7 +57,7 @@ module.exports = {
       filename: 'index.html',
       template: 'src/templates/index.html'
     }),
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: 'styles/main.css'
     })
   ]
